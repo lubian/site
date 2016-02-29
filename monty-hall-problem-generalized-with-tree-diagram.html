@@ -14,8 +14,10 @@
         <header id="banner" class="body">
                 <h1><a href="/">Welcome to Lu's Site </a></h1>
                 <nav><ul>
-                    <li><a href="/category/about-me.html">About Me</a></li>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/algorithms.html">Algorithms</a></li>
                     <li><a href="/category/data-mining.html">Data Mining</a></li>
+                    <li><a href="/category/drawingpainting.html">Drawing&Painting</a></li>
                     <li class="active"><a href="/category/probability.html">Probability</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -74,7 +76,7 @@ Let's use graphviz to draw a tree diagram.</p>
 </pre></div>
 
 
-<p><img alt="Alt text" src="monty_hall.png" /></p>
+<p><img alt="Alt text" src="/images/monty_hall.png" /></p>
 <p>From the above tree, we see clearly that the probability of wining if not switch is 1/3+0=1/3, and the probability of wining if switch is 0+2/3=2/3
 So the best strategy is to switch!</p>
 <p>To generalize the problem, assume there are k doors with prize and m doors without prize, and we draw the tree diagram:</p>
@@ -99,7 +101,7 @@ So the best strategy is to switch!</p>
 </pre></div>
 
 
-<p><img alt="Alt text" src="monty_hall_gen.jpg" /></p>
+<p><img alt="Alt text" src="/images/monty_hall_gen.jpg" /></p>
 <p>From the new tree, we see that the probability of wining if not switch is k/(k+m) + 0 = k/(k+m), and the probability of wining if switch is k/(k+m) * (k-1)/(k+m-2) + m/(k+m) * k/(k+m-2) = k(k+m-1)/(k+m)(k+m-2) surely &gt; k/(k+m)
 So in general the best strategy is to switch!</p>
     </div><!-- /.entry-content -->

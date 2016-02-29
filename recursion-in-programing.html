@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Recursion in programing</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Welcome to Lu's Site </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li class="active"><a href="/category/algorithms.html">Algorithms</a></li>
+                    <li><a href="/category/data-mining.html">Data Mining</a></li>
+                    <li><a href="/category/drawingpainting.html">Drawing&Painting</a></li>
+                    <li><a href="/category/probability.html">Probability</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/recursion-in-programing.html" rel="bookmark"
+           title="Permalink to Recursion in programing">Recursion in programing</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-02-13T00:00:00+00:00">
+                Published: Sat 13 February 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lu-bian.html">Lu BIAN</a>
+        </address>
+<p>In <a href="/category/algorithms.html">Algorithms</a>.</p>
+<p>tags: <a href="/tag/recursion.html">recursion</a> </p>
+</footer><!-- /.post-info -->      <p>Recursion is widely used in computer science. 
+Imagine to define a function f(n),let n denote the nth step, if we happen to known that f(n) is a function of f(n-1),<strong>f(n)=g(f(n-1))</strong>, then we can use recursion to define the function f(n).</p>
+<p>The key of recursion is to use the same method g(x) recursively in future steps until the stop criteria is meeted. So three things must be defined:
+<em> start point f(0)
+</em> method recursively applied: g(x)
+* stop condition</p>
+<p>Here are some examples and implementations.</p>
+<h3>calculate factorial: f(n) = n * f(n-1)</h3>
+<ul>
+<li>calculate the factorial n!, which is the product of all numbers from 1  to n</li>
+<li><strong>start</strong>: initiate from f(0)=1</li>
+<li><strong>each step</strong>: g(x)=n * x, repeatedly multiply k in step k</li>
+<li><strong>stop</strong>: number of steps reaches n</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">mul</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mul</span><span class="o">*</span><span class="n">k</span>
+
+<span class="k">def</span> <span class="nf">fac1</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">step</span><span class="p">(</span><span class="n">fac</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">fac1</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>24
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># or even make the step function anonymous</span>
+<span class="k">def</span> <span class="nf">fac</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span><span class="o">*</span><span class="n">fac</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">fac</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># fac function is called n+1 times</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>24
+</pre></div>
+
+
+<h3>calculate pi (approximation)</h3>
+<ul>
+<li>pi = 4 * (1 - 1/3 + 1/5 - 1/7 + 1/9 -1/11 +1/13....</li>
+<li><strong>start</strong>: k=0</li>
+<li><strong>step</strong>:  repeatedly add (-1)^k/(2k+1)</li>
+<li><strong>stop</strong>: difference between kth value and k-1th value is less than 0.00001</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pi</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">4</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">pi</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">pi</span><span class="p">(</span><span class="mi">600</span><span class="p">)</span>    
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>3.143256545948974
+</pre></div>
+
+
+<h3>calculate GCD (greatest common devisor)</h3>
+<ul>
+<li>using Euclidean algorithm :g = gcd(a, b) = gcd(b, r0) = gcd(r0, r1) = … = gcd(rN−2, rN−1) = rN−1</li>
+<li><strong>start</strong>: two positive numbers a,b</li>
+<li><strong>step</strong>: gcd(a,b) =&gt; gcd(b,a%b), repeatedly subtract the greater number buy a multiple of the smaller number, and call gcd using the smaller number and the remainder as input</li>
+<li><strong>stop</strong>: gcd(r,0)=r</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">a</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">gcd</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>2
+</pre></div>
+
+
+<h3>calculate sqare root by Newton's method: f(n) = f(n-1) + x/f(n-1)</h3>
+<ul>
+<li>description of problem: given a positive number a, calculate the square root of a</li>
+<li><strong>start</strong>: Start with an initial estimate y</li>
+<li><strong>each step</strong>: g(x)=(x+a/x)/2, repeatedly improve the estimate by taking the mean of y and x/y, y(k)=mean(y(k),x/y(k)), so the error err(k) = abs((y(k)^2-x)/x)</li>
+<li><strong>stop</strong>: delta(k) &lt; error</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># initial value y should not be 0</span>
+<span class="k">def</span> <span class="nf">closeEnough</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">((</span><span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">a</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">0.01</span>
+
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="n">a</span><span class="o">/</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">sqrt_rec</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">closeEnough</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">y</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sqrt_rec</span><span class="p">(</span><span class="n">step</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">sqrt_rec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>3.00009155413138
+</pre></div>
+
+
+<h3>generate fibonacci sequence f(n)=f(n-1)+[seq[–1]+seq[–2]]</h3>
+<ul>
+<li>fibonacci sequence 0, 1, 1, 2, 3, 5, 8, 13, ..., such that each number is the sum of two previous numbers(except the first two numbers: 0, 1)</li>
+<li><strong>start</strong>: start from a fibonacci sequence,with the number of items to add N</li>
+<li><strong>each step</strong>: g(x)=x+(x[-1]+x[-2]), repeateded add a number(which is the sum of last two numbers) into the sequence, while descreasing N by 1</li>
+<li><strong>stop</strong>: N==0</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibo_step</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">l</span>
+
+<span class="k">def</span> <span class="nf">fibo_gen</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">N</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">l</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fibo_gen</span><span class="p">(</span><span class="n">fibo_step</span><span class="p">(</span><span class="n">l</span><span class="p">),</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">fibo_gen</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+</pre></div>
+
+
+<p>the generation of fibonacci sequence can be devided into two recursive parts:
+<em> generate the nth fibonacci number f(n)=f(n-1)+f(n-2) <br />
+</em> generate fibonacci sequence with fibonacci number</p>
+<p><strong> generate the nth fibonacci number f(n)=f(n-1)+f(n-2) </strong>    </p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibo</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">n</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fibo</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">fibo</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fibo</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>34
+</pre></div>
+
+
+<p><strong>generate fibonacci sequence with fibonacci number</strong></p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibo_seq</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">n</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fibo_seq</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="p">[</span><span class="n">fibo</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+
+<span class="n">fibo_seq</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+</pre></div>
+
+
+<h3>calculate a path from a tree graph</h3>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">findPath</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">,</span><span class="n">pathSoFar</span><span class="p">):</span>
+    <span class="n">pathSoFar</span> <span class="o">=</span> <span class="n">pathSoFar</span><span class="o">+</span><span class="p">[</span><span class="n">start</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pathSoFar</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">start</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pathSoFar</span><span class="p">:</span>
+            <span class="n">newpath</span> <span class="o">=</span> <span class="n">findPath</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span><span class="n">node</span><span class="p">,</span><span class="n">end</span><span class="p">,</span><span class="n">pathSoFar</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">newpath</span>
+    <span class="k">return</span> <span class="bp">None</span>
+
+<span class="n">graph</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">],</span><span class="s1">&#39;B&#39;</span><span class="p">:[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">],</span><span class="s1">&#39;C&#39;</span><span class="p">:[</span><span class="s1">&#39;D&#39;</span><span class="p">],</span><span class="s1">&#39;D&#39;</span><span class="p">:[</span><span class="s1">&#39;C&#39;</span><span class="p">],</span><span class="s1">&#39;E&#39;</span><span class="p">:[</span><span class="s1">&#39;F&#39;</span><span class="p">],</span><span class="s1">&#39;F&#39;</span><span class="p">:[</span><span class="s1">&#39;C&#39;</span><span class="p">]}</span>
+<span class="n">findPath</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">,[])</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;]
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
