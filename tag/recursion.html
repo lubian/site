@@ -1,249 +1,208 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+>
 <head>
-        <meta charset="utf-8" />
-        <title>Welcome to Lu's Site - recursion</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+    <title>recursion - Welcome to Lu's Site</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+
+
+
+    <meta name="author" content="Lu Bian" />
+    <meta name="keywords" content="recursion" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="Welcome to Lu's Site" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Welcome to Lu's Site"/>
+        <meta property="og:url" content=""/>
+        <meta property="og:description" content="Welcome to Lu's Site"/>
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.cerulean.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
 </head>
+<body>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Welcome to Lu's Site </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li><a href="/category/algorithms.html">Algorithms</a></li>
-                    <li><a href="/category/data-mining.html">Data Mining</a></li>
-                    <li><a href="/category/drawingpainting.html">Drawing&Painting</a></li>
-                    <li><a href="/category/probability.html">Probability</a></li>
-                    <li><a href="/category/statistics.html">Statistics</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Welcome to Lu's Site            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="/pages/about-me.html">
+                             About Me
+                          </a></li>
+                        <li >
+                            <a href="/category/data-mining.html">Data mining</a>
+                        </li>
+                        <li >
+                            <a href="/category/paintingsdrawings.html">Paintings&drawings</a>
+                        </li>
+                        <li >
+                            <a href="/category/statistics.html">Statistics</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="/search">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+              <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <ol class="breadcrumb">
+        <li><a href="" title="Welcome to Lu's Site"><i class="fa fa-home fa-lg"></i></a></li>
+        <li><a href="//home/lulu/pelican-themes/pelican-bootstrap3/templates/tags.html" title="Tags">Tags</a></li>
+        <li class="active">recursion</li>
+    </ol>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/recursion-in-programing.html">Recursion in programing</a></h1>
+            <article>
+                <h2><a href="/recursion-in-programing.html">Recursion in programing</a></h2>
+                    <div class="well well-sm">
 <footer class="post-info">
-        <abbr class="published" title="2016-02-13T00:00:00+00:00">
-                Published: Sat 13 February 2016
-        </abbr>
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-13T00:00:00+00:00"> Sat 13 February 2016</time>
+    </span>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/lu-bian.html">Lu BIAN</a>
-        </address>
-<p>In <a href="/category/algorithms.html">Algorithms</a>.</p>
-<p>tags: <a href="/tag/recursion.html">recursion</a> </p>
-</footer><!-- /.post-info --><p>Recursion is widely used in computer science. 
-Imagine to define a function f(n),let n denote the nth step, if we happen to known that f(n) is a function of f(n-1),<strong>f(n)=g(f(n-1))</strong>, then we can use recursion to define the function f(n).</p>
-<p>The key of recursion is to use the same method g(x) recursively in future steps until the stop criteria is meeted. So three things must be defined:
-<em> start point f(0)
-</em> method recursively applied: g(x)
-* stop condition</p>
-<p>Here are some examples and implementations.</p>
-<h3>calculate factorial: f(n) = n * f(n-1)</h3>
-<ul>
-<li>calculate the factorial n!, which is the product of all numbers from 1  to n</li>
-<li><strong>start</strong>: initiate from f(0)=1</li>
-<li><strong>each step</strong>: g(x)=n * x, repeatedly multiply k in step k</li>
-<li><strong>stop</strong>: number of steps reaches n</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">mul</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">mul</span><span class="o">*</span><span class="n">k</span>
-
-<span class="k">def</span> <span class="nf">fac1</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">step</span><span class="p">(</span><span class="n">fac</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">n</span><span class="p">)</span>
-
-<span class="n">fac1</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-</pre></div>
+        <span class="label label-default">Category</span>
+        <a href="/category/data-mining.html">Data Mining</a>
 
 
-<div class="highlight"><pre><span></span>24
-</pre></div>
+<span class="label label-default">Tags</span>
+	<a href="/tag/recursion.html">recursion</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p>Recursion is widely used in computer science. 
+Imagine to define a function f(n),let n denote the nth step, if we happen to known that f(n) is a function of f(n-1),<strong>f(n)=g(f(n-1))</strong>, then we can use recursion to define the function f(n ...</p>
+                    <a class="btn btn-default btn-xs" href="/recursion-in-programing.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="https://www.linkedin.com/in/lu-bian-58ba2417?trk=hp-identity-name"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+                <li class="list-group-item"><a href="https://github.com/lubian"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+                <li class="list-group-item"><a href="http://twitter.com/lulubian"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+              </ul>
+            </li>
+
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="/recursion-in-programing.html">
+                            Recursion in programing
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
 
-<div class="highlight"><pre><span></span><span class="c1"># or even make the step function anonymous</span>
-<span class="k">def</span> <span class="nf">fac</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">n</span><span class="o">*</span><span class="n">fac</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <li class="list-group-item"><a href="//home/lulu/pelican-themes/pelican-bootstrap3/templates/tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group list-inline tagcloud" id="tags">
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/conditional-probability.html">
+                            conditional probability
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/multiplication-rule.html">
+                            multiplication rule
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/ngrams.html">
+                            ngrams
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/probability.html">
+                            probability
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/r.html">
+                            R
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/recursion.html">
+                            recursion
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/statistics.html">
+                            statistics
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/text-mining.html">
+                            text mining
+                        </a>
+                    </li>
+                </ul>
+            </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 Lu Bian
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
 
-<span class="n">fac</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="c1"># fac function is called n+1 times</span>
-</pre></div>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
 
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
 
-<div class="highlight"><pre><span></span>24
-</pre></div>
-
-
-<h3>calculate pi (approximation)</h3>
-<ul>
-<li>pi = 4 * (1 - 1/3 + 1/5 - 1/7 + 1/9 -1/11 +1/13....</li>
-<li><strong>start</strong>: k=0</li>
-<li><strong>step</strong>:  repeatedly add (-1)^k/(2k+1)</li>
-<li><strong>stop</strong>: difference between kth value and k-1th value is less than 0.00001</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pi</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">4</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">pi</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">pi</span><span class="p">(</span><span class="mi">600</span><span class="p">)</span>    
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>3.143256545948974
-</pre></div>
-
-
-<h3>calculate GCD (greatest common devisor)</h3>
-<ul>
-<li>using Euclidean algorithm :g = gcd(a, b) = gcd(b, r0) = gcd(r0, r1) = … = gcd(rN−2, rN−1) = rN−1</li>
-<li><strong>start</strong>: two positive numbers a,b</li>
-<li><strong>step</strong>: gcd(a,b) =&gt; gcd(b,a%b), repeatedly subtract the greater number buy a multiple of the smaller number, and call gcd using the smaller number and the remainder as input</li>
-<li><strong>stop</strong>: gcd(r,0)=r</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">a</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">)</span>
-
-<span class="n">gcd</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>2
-</pre></div>
-
-
-<h3>calculate sqare root by Newton's method: f(n) = f(n-1) + x/f(n-1)</h3>
-<ul>
-<li>description of problem: given a positive number a, calculate the square root of a</li>
-<li><strong>start</strong>: Start with an initial estimate y</li>
-<li><strong>each step</strong>: g(x)=(x+a/x)/2, repeatedly improve the estimate by taking the mean of y and x/y, y(k)=mean(y(k),x/y(k)), so the error err(k) = abs((y(k)^2-x)/x)</li>
-<li><strong>stop</strong>: delta(k) &lt; error</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="c1"># initial value y should not be 0</span>
-<span class="k">def</span> <span class="nf">closeEnough</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">abs</span><span class="p">((</span><span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">a</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">0.01</span>
-
-<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="n">a</span><span class="o">/</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-
-<span class="k">def</span> <span class="nf">sqrt_rec</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">closeEnough</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">y</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">sqrt_rec</span><span class="p">(</span><span class="n">step</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">),</span><span class="n">a</span><span class="p">)</span>
-
-<span class="n">sqrt_rec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>3.00009155413138
-</pre></div>
-
-
-<h3>generate fibonacci sequence f(n)=f(n-1)+[seq[–1]+seq[–2]]</h3>
-<ul>
-<li>fibonacci sequence 0, 1, 1, 2, 3, 5, 8, 13, ..., such that each number is the sum of two previous numbers(except the first two numbers: 0, 1)</li>
-<li><strong>start</strong>: start from a fibonacci sequence,with the number of items to add N</li>
-<li><strong>each step</strong>: g(x)=x+(x[-1]+x[-2]), repeateded add a number(which is the sum of last two numbers) into the sequence, while descreasing N by 1</li>
-<li><strong>stop</strong>: N==0</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibo_step</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
-    <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">l</span>
-
-<span class="k">def</span> <span class="nf">fibo_gen</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">N</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">l</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">fibo_gen</span><span class="p">(</span><span class="n">fibo_step</span><span class="p">(</span><span class="n">l</span><span class="p">),</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">fibo_gen</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="mi">8</span><span class="p">)</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
-</pre></div>
-
-
-<p>the generation of fibonacci sequence can be devided into two recursive parts:
-<em> generate the nth fibonacci number f(n)=f(n-1)+f(n-2) <br />
-</em> generate fibonacci sequence with fibonacci number</p>
-<p><strong> generate the nth fibonacci number f(n)=f(n-1)+f(n-2) </strong>    </p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibo</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
-    <span class="k">elif</span> <span class="n">n</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">fibo</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">fibo</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fibo</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>34
-</pre></div>
-
-
-<p><strong>generate fibonacci sequence with fibonacci number</strong></p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibo_seq</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">elif</span> <span class="n">n</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">fibo_seq</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="p">[</span><span class="n">fibo</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
-
-<span class="n">fibo_seq</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
-</pre></div>
-
-
-<h3>calculate a path from a tree graph</h3>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">findPath</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">,</span><span class="n">pathSoFar</span><span class="p">):</span>
-    <span class="n">pathSoFar</span> <span class="o">=</span> <span class="n">pathSoFar</span><span class="o">+</span><span class="p">[</span><span class="n">start</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">pathSoFar</span>
-    <span class="k">if</span> <span class="n">start</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">None</span>
-    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">start</span><span class="p">]:</span>
-        <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pathSoFar</span><span class="p">:</span>
-            <span class="n">newpath</span> <span class="o">=</span> <span class="n">findPath</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span><span class="n">node</span><span class="p">,</span><span class="n">end</span><span class="p">,</span><span class="n">pathSoFar</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">newpath</span>
-    <span class="k">return</span> <span class="bp">None</span>
-
-<span class="n">graph</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">],</span><span class="s1">&#39;B&#39;</span><span class="p">:[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">],</span><span class="s1">&#39;C&#39;</span><span class="p">:[</span><span class="s1">&#39;D&#39;</span><span class="p">],</span><span class="s1">&#39;D&#39;</span><span class="p">:[</span><span class="s1">&#39;C&#39;</span><span class="p">],</span><span class="s1">&#39;E&#39;</span><span class="p">:[</span><span class="s1">&#39;F&#39;</span><span class="p">],</span><span class="s1">&#39;F&#39;</span><span class="p">:[</span><span class="s1">&#39;C&#39;</span><span class="p">]}</span>
-<span class="n">findPath</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">,[])</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;]
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-        <section id="extras" class="body">
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
 
 </body>
 </html>

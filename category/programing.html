@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Welcome to Lu's Site - Programing</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Welcome to Lu's Site </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/category/algorithms.html">Algorithms</a></li>
+                    <li><a href="/category/data-mining.html">Data Mining</a></li>
+                    <li><a href="/category/drawingpainting.html">Drawing&Painting</a></li>
+                    <li><a href="/category/probability.html">Probability</a></li>
+                    <li class="active"><a href="/category/programing.html">Programing</a></li>
+                    <li><a href="/category/statistics.html">Statistics</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/manipulating-data-with-linux-commands.html">Manipulating data with linux commands</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-02-03T00:00:00+00:00">
+                Published: Wed 03 February 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/lu-bian.html">Lu BIAN</a>
+        </address>
+<p>In <a href="/category/programing.html">Programing</a>.</p>
+
+</footer><!-- /.post-info --><p>Here are a few commands that I often use before using a R or Python to explore the raw datasets.</p>
+<ul>
+<li>when facing a big file, it's better to have a brief look at the data before loading the whole data into memory.</li>
+</ul>
+<blockquote>
+<p>head -4 count forestfires.csv
+X,Y,month,day,FFMC,DMC,DC,ISI,temp,RH,wind,rain,area<br />
+7,5,mar,fri,86.2,26.2,94.3,5.1,8.2,51,6.7,0,0<br />
+7,4,oct,tue,90.6,35.4,669.1,6.7,18,33,0.9,0,0<br />
+7,4,oct,sat,90.6,43.7,686.9,6.7,14.6,33,1.3,0,0
+- however, it is quite difficult to see which data belongs to which column. I can use 'column' command to create a table view by indicating the separate symbol as comma.</p>
+<p>head -4 count forestfires.csv | column -t -s $','
+X                        Y  month  day  FFMC  DMC   DC     ISI  temp  RH  wind  rain  area<br />
+7                        5  mar    fri  86.2  26.2  94.3   5.1  8.2   51  6.7   0     0<br />
+7                        4  oct    tue  90.6  35.4  669.1  6.7  18    33  0.9   0     0<br />
+7                        4  oct    sat  90.6  43.7  686.9  6.7  14.6  33  1.3   0     0<br />
+* to have an idea of the size(total number of lines) in the input file(s), I can use 'wc' command :</p>
+<p>wc -l forestfires.csv linux_command_data_manipulation.ipynb 
+     518 forestfires.csv
+     125 linux_command_data_manipulation.ipynb
+     643 total
+<em> to deal with blank lines, I use 'seb' command
+sed '/^[[:space:]]</em>$/d' filename &gt; new_filename
+<em> to deal with duplicated lines, I use 'sort' and 'seb' command
+ sort filename | uniq &gt; new_filename
+</em> to begin exploration with a small subset of the original file, I can for example extract the first 1000 lines and put it in a new file.</p>
+<p>head -n 1000 forestfires.csv &gt; temp.csv</p>
+</blockquote>
+<ul>
+<li>when lines are ordered, it is better to sample the file to get 1000 lines instead of taking the first 1000 lines. One way is to use 'shuf' command. </li>
+</ul>
+<p>shuf -n 1000 filename</p>
+<p>to further explore data, <strong>csvkit</strong> is a nice tool, for example:
+- csvlook: data periscope
+- csvcut: data scalpel
+- csvstat: statistics without code
+- csvgrep: find the data you need
+- csvsort: order matters
+- csvjoin: merging related data</p>
+<p>other commands often used are:
+diff, grep, split, cut </p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

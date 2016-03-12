@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en"
+>
+<head>
+    <title>Manipulating data with linux commands - Welcome to Lu's Site</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/manipulating-data-with-linux-commands.html">
+
+        <meta name="author" content="Lu BIAN" />
+        <meta name="description" content="Here are a few commands that I often use before using a R or Python to explore the raw datasets. when facing a big file, it&#39;s better to have a brief look at the data before loading the whole data into memory. head -4 count forestfires.csv X,Y ..." />
+
+        <meta property="og:site_name" content="Welcome to Lu's Site" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Manipulating data with linux commands"/>
+        <meta property="og:url" content="/manipulating-data-with-linux-commands.html"/>
+        <meta property="og:description" content="Here are a few commands that I often use before using a R or Python to explore the raw datasets. when facing a big file, it&#39;s better to have a brief look at the data before loading the whole data into memory. head -4 count forestfires.csv X,Y ..."/>
+        <meta property="article:published_time" content="2016-02-03" />
+            <meta property="article:section" content="Data Mining" />
+            <meta property="article:author" content="Lu BIAN" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.cerulean.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Welcome to Lu's Site            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="/pages/about-me.html">
+                             About Me
+                          </a></li>
+                        <li class="active">
+                            <a href="/category/data-mining.html">Data mining</a>
+                        </li>
+                        <li >
+                            <a href="/category/paintingsdrawings.html">Paintings&drawings</a>
+                        </li>
+                        <li >
+                            <a href="/category/statistics.html">Statistics</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="/search">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+              <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <ol class="breadcrumb">
+                <li><a href="" title="Welcome to Lu's Site"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="/category/data-mining.html" title="Data Mining">Data Mining</a></li>
+                <li class="active">Manipulating data with linux commands</li>
+            </ol>
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/manipulating-data-with-linux-commands.html"
+                       rel="bookmark"
+                       title="Permalink to Manipulating data with linux commands">
+                        Manipulating data with linux commands
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-03T00:00:00+00:00"> Wed 03 February 2016</time>
+    </span>
+
+        <span class="label label-default">Category</span>
+        <a href="/category/data-mining.html">Data Mining</a>
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Here are a few commands that I often use before using a R or Python to explore the raw datasets.</p>
+<ul>
+<li>when facing a big file, it's better to have a brief look at the data before loading the whole data into memory.</li>
+</ul>
+<div class="highlight"><pre><span></span> head -4 count forestfires.csv
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>X,Y,month,day,FFMC,DMC,DC,ISI,temp,RH,wind,rain,area  
+7,5,mar,fri,86.2,26.2,94.3,5.1,8.2,51,6.7,0,0  
+7,4,oct,tue,90.6,35.4,669.1,6.7,18,33,0.9,0,0  
+7,4,oct,sat,90.6,43.7,686.9,6.7,14.6,33,1.3,0,0
+</pre></div>
+
+
+<ul>
+<li>however, it is quite difficult to see which data belongs to which column. I can use 'column' command to create a table view by indicating the separate symbol as comma.</li>
+</ul>
+<div class="highlight"><pre><span></span> head -4 count forestfires.csv <span class="p">|</span> column -t -s <span class="s1">$&#39;,&#39;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>X                        Y  month  day  FFMC  DMC   DC     ISI  temp  RH  wind  rain  area  
+7                        5  mar    fri  86.2  26.2  94.3   5.1  8.2   51  6.7   0     0  
+7                        4  oct    tue  90.6  35.4  669.1  6.7  18    33  0.9   0     0  
+7                        4  oct    sat  90.6  43.7  686.9  6.7  14.6  33  1.3   0     0
+</pre></div>
+
+
+<ul>
+<li>to have an idea of the size(total number of lines) in the input file(s), I can use 'wc' command :</li>
+</ul>
+<div class="highlight"><pre><span></span>  wc -l forestfires.csv linux_command_data_manipulation.ipynb 
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>     518 forestfires.csv
+     125 linux_command_data_manipulation.ipynb
+     643 total
+</pre></div>
+
+
+<ul>
+<li>to deal with blank lines, I use 'seb' command</li>
+</ul>
+<div class="highlight"><pre><span></span>  sed <span class="s1">&#39;/^[[:space:]]*$/d&#39;</span> filename &gt; new_filename
+</pre></div>
+
+
+<ul>
+<li>to deal with duplicated lines, I use 'sort' and 'seb' command</li>
+</ul>
+<div class="highlight"><pre><span></span> sort filename <span class="p">|</span> uniq &gt; new_filename
+</pre></div>
+
+
+<ul>
+<li>to begin exploration with a small subset of the original file, I can for example extract the first 1000 lines and put it in a new file.</li>
+</ul>
+<div class="highlight"><pre><span></span> head -n <span class="m">1000</span> forestfires.csv &gt; temp.csv
+</pre></div>
+
+
+<ul>
+<li>when lines are ordered, it is better to sample the file to get 1000 lines instead of taking the first 1000 lines. One way is to use 'shuf' command. </li>
+</ul>
+<div class="highlight"><pre><span></span>shuf -n <span class="m">1000</span> filename
+</pre></div>
+
+
+<p>to further explore data, <strong>csvkit</strong> is a nice tool, for example:
+- csvlook: data periscope
+- csvcut: data scalpel
+- csvstat: statistics without code
+- csvgrep: find the data you need
+- csvsort: order matters
+- csvjoin: merging related data</p>
+<p>other commands often used are:
+diff, grep, split, cut </p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="https://www.linkedin.com/in/lu-bian-58ba2417?trk=hp-identity-name"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+                <li class="list-group-item"><a href="https://github.com/lubian"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+                <li class="list-group-item"><a href="http://twitter.com/lulubian"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+              </ul>
+            </li>
+
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="/mistry.html">
+                            Mistry
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/stock-price-analysis-with-timeseries.html">
+                            stock price analysis with timeseries
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/cat-in-watersoluble-pencil.html">
+                            cat in watersoluble pencil
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/recursion-in-programing.html">
+                            Recursion in programing
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="list-group-item"><a href="//home/lulu/pelican-themes/pelican-bootstrap3/templates/tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group list-inline tagcloud" id="tags">
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/conditional-probability.html">
+                            conditional probability
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/multiplication-rule.html">
+                            multiplication rule
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/ngrams.html">
+                            ngrams
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/probability.html">
+                            probability
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/r.html">
+                            R
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/recursion.html">
+                            recursion
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/statistics.html">
+                            statistics
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/text-mining.html">
+                            text mining
+                        </a>
+                    </li>
+                </ul>
+            </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 Lu Bian
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+</body>
+</html>

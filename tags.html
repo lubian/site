@@ -1,52 +1,258 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+>
 <head>
-        <meta charset="utf-8" />
-        <title>Welcome to Lu's Site - Tags</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+    <title>Tags - Welcome to Lu's Site</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+
+
+
+        <meta name="author" content="Lu Bian" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="Welcome to Lu's Site" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Welcome to Lu's Site"/>
+        <meta property="og:url" content=""/>
+        <meta property="og:description" content="Welcome to Lu's Site"/>
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.cerulean.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
 </head>
+<body>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Welcome to Lu's Site </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about-me.html">About Me</a></li>
-                    <li><a href="/category/algorithms.html">Algorithms</a></li>
-                    <li><a href="/category/data-mining.html">Data Mining</a></li>
-                    <li><a href="/category/drawingpainting.html">Drawing&Painting</a></li>
-                    <li><a href="/category/probability.html">Probability</a></li>
-                    <li><a href="/category/statistics.html">Statistics</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Welcome to Lu's Site            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="/pages/about-me.html">
+                             About Me
+                          </a></li>
+                        <li >
+                            <a href="/category/data-mining.html">Data mining</a>
+                        </li>
+                        <li >
+                            <a href="/category/paintingsdrawings.html">Paintings&drawings</a>
+                        </li>
+                        <li >
+                            <a href="/category/statistics.html">Statistics</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="/search">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+              <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <ol class="breadcrumb">
+        <li><a href="" title="Welcome to Lu's Site"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="active">Tags</li>
+    </ol>
 
-<section id="content" class="body">
-    <h1>Tags for Welcome to Lu's Site</h1>
-    <ul>
-        <li><a href="/tag/conditional-probability.html">conditional probability</a> (1)</li>
-        <li><a href="/tag/multiplication-rule.html">multiplication rule</a> (1)</li>
-        <li><a href="/tag/ngrams.html">ngrams</a> (1)</li>
-        <li><a href="/tag/probability.html">probability</a> (1)</li>
-        <li><a href="/tag/r.html">R</a> (1)</li>
-        <li><a href="/tag/recursion.html">recursion</a> (1)</li>
-        <li><a href="/tag/statistics.html">statistics</a> (1)</li>
-        <li><a href="/tag/text-mining.html">text mining</a> (1)</li>
+    <section id="tags">
+        <h1>Tags for Welcome to Lu's Site</h1>
+        <div class="panel-group" id="accordion">            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-conditional-probability">conditional probability <span class="badge pull-right">1</span></a>
+                    </h4>
+                </div>
+                <div id="collapse-conditional-probability" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p><span class="categories-timestamp"><time datetime="2016-01-03T10:20:00+00:00">Sun 03 January 2016</time></span> <a href="/monty-hall-problem-generalized-with-tree-diagram.html">monty hall problem generalized with tree diagram</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-multiplication-rule">multiplication rule <span class="badge pull-right">1</span></a>
+                    </h4>
+                </div>
+                <div id="collapse-multiplication-rule" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p><span class="categories-timestamp"><time datetime="2016-01-03T10:20:00+00:00">Sun 03 January 2016</time></span> <a href="/monty-hall-problem-generalized-with-tree-diagram.html">monty hall problem generalized with tree diagram</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-ngrams">ngrams <span class="badge pull-right">1</span></a>
+                    </h4>
+                </div>
+                <div id="collapse-ngrams" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p><span class="categories-timestamp"><time datetime="2016-01-02T10:20:00+00:00">Sat 02 January 2016</time></span> <a href="/random-sentences-generation-with-ngrams.html">random sentences generation with ngrams</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-probability">probability <span class="badge pull-right">1</span></a>
+                    </h4>
+                </div>
+                <div id="collapse-probability" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p><span class="categories-timestamp"><time datetime="2016-01-03T10:20:00+00:00">Sun 03 January 2016</time></span> <a href="/monty-hall-problem-generalized-with-tree-diagram.html">monty hall problem generalized with tree diagram</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-r">R <span class="badge pull-right">1</span></a>
+                    </h4>
+                </div>
+                <div id="collapse-r" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p><span class="categories-timestamp"><time datetime="2016-02-29T10:20:00+00:00">Mon 29 February 2016</time></span> <a href="/stock-price-analysis-with-timeseries.html">stock price analysis with timeseries</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-recursion">recursion <span class="badge pull-right">1</span></a>
+                    </h4>
+                </div>
+                <div id="collapse-recursion" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p><span class="categories-timestamp"><time datetime="2016-02-13T00:00:00+00:00">Sat 13 February 2016</time></span> <a href="/recursion-in-programing.html">Recursion in programing</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-statistics">statistics <span class="badge pull-right">1</span></a>
+                    </h4>
+                </div>
+                <div id="collapse-statistics" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p><span class="categories-timestamp"><time datetime="2016-02-29T10:20:00+00:00">Mon 29 February 2016</time></span> <a href="/stock-price-analysis-with-timeseries.html">stock price analysis with timeseries</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-text-mining">text mining <span class="badge pull-right">1</span></a>
+                    </h4>
+                </div>
+                <div id="collapse-text-mining" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p><span class="categories-timestamp"><time datetime="2016-01-02T10:20:00+00:00">Sat 02 January 2016</time></span> <a href="/random-sentences-generation-with-ngrams.html">random sentences generation with ngrams</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="https://www.linkedin.com/in/lu-bian-58ba2417?trk=hp-identity-name"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+                <li class="list-group-item"><a href="https://github.com/lubian"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+                <li class="list-group-item"><a href="http://twitter.com/lulubian"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+              </ul>
+            </li>
+
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="/mistry.html">
+                            Mistry
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/stock-price-analysis-with-timeseries.html">
+                            stock price analysis with timeseries
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/cat-in-watersoluble-pencil.html">
+                            cat in watersoluble pencil
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/recursion-in-programing.html">
+                            Recursion in programing
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="list-group-item"><a href="//home/lulu/pelican-themes/pelican-bootstrap3/templates/tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group list-inline tagcloud" id="tags">
+                </ul>
+            </li>
     </ul>
 </section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 Lu Bian
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
 
-        <section id="extras" class="body">
-        </section><!-- /#extras -->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
 
 </body>
 </html>
