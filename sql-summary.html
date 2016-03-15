@@ -2,7 +2,7 @@
 <html lang="en"
 >
 <head>
-    <title>cat in watercolor - Welcome to Lu's Site</title>
+    <title>SQL summary - Welcome to Lu's Site</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,18 +10,20 @@
 
 
 
-<link rel="canonical" href="/cat-in-watercolor.html">
+<link rel="canonical" href="/sql-summary.html">
 
         <meta name="author" content="Lu BIAN" />
-        <meta name="description" content="I drew my little cat Dodo in a poste card size. My little cat is always curious, she often strenches her neck to see what&#39;s happening up there. She can be quickly transformed into a builder with a little hat. She likes observing others, even when she lies down." />
+        <meta name="keywords" content="SQL" />
+        <meta name="description" content="SQL is a widely used language to manipulate relational database. In distributed system, there is also an SQL like language Hive. A data scientist&#39;s daily work may be mainly with R and Python to build statistical models, thus much less with SQL for query operations. Although SQL is a ..." />
 
         <meta property="og:site_name" content="Welcome to Lu's Site" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="cat in watercolor"/>
-        <meta property="og:url" content="/cat-in-watercolor.html"/>
-        <meta property="og:description" content="I drew my little cat Dodo in a poste card size. My little cat is always curious, she often strenches her neck to see what&#39;s happening up there. She can be quickly transformed into a builder with a little hat. She likes observing others, even when she lies down."/>
-        <meta property="article:published_time" content="2015-07-25" />
-            <meta property="article:section" content="Paintings&Drawings" />
+        <meta property="og:title" content="SQL summary"/>
+        <meta property="og:url" content="/sql-summary.html"/>
+        <meta property="og:description" content="SQL is a widely used language to manipulate relational database. In distributed system, there is also an SQL like language Hive. A data scientist&#39;s daily work may be mainly with R and Python to build statistical models, thus much less with SQL for query operations. Although SQL is a ..."/>
+        <meta property="article:published_time" content="2016-03-15" />
+            <meta property="article:section" content="Data Mining" />
+            <meta property="article:tag" content="SQL" />
             <meta property="article:author" content="Lu BIAN" />
 
 
@@ -57,10 +59,10 @@ Welcome to Lu's Site            </a>
                          <li><a href="/pages/about-me.html">
                              About Me
                           </a></li>
-                        <li >
+                        <li class="active">
                             <a href="/category/data-mining.html">Data mining</a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="/category/paintingsdrawings.html">Paintings&drawings</a>
                         </li>
                         <li >
@@ -81,18 +83,18 @@ Welcome to Lu's Site            </a>
         <div class="col-sm-9">
             <ol class="breadcrumb">
                 <li><a href="" title="Welcome to Lu's Site"><i class="fa fa-home fa-lg"></i></a></li>
-                <li><a href="/category/paintingsdrawings.html" title="Paintings&Drawings">Paintings&Drawings</a></li>
-                <li class="active">cat in watercolor</li>
+                <li><a href="/category/data-mining.html" title="Data Mining">Data Mining</a></li>
+                <li class="active">SQL summary</li>
             </ol>
 
     <section id="content">
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="/cat-in-watercolor.html"
+                    <a href="/sql-summary.html"
                        rel="bookmark"
-                       title="Permalink to cat in watercolor">
-                        cat in watercolor
+                       title="Permalink to SQL summary">
+                        SQL summary
                     </a>
                 </h1>
             </header>
@@ -102,23 +104,78 @@ Welcome to Lu's Site            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-07-25T00:00:00+01:00"> Sat 25 July 2015</time>
+        <i class="fa fa-calendar"></i><time datetime="2016-03-15T10:20:00+00:00"> Tue 15 March 2016</time>
     </span>
 
         <span class="label label-default">Category</span>
-        <a href="/category/paintingsdrawings.html">Paintings&Drawings</a>
+        <a href="/category/data-mining.html">Data Mining</a>
 
 
+<span class="label label-default">Tags</span>
+	<a href="/tag/sql.html">SQL</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>I drew my little cat Dodo in a poste card size.</p>
-<p>My little cat is always curious, she often strenches her neck to see what's happening up there.</p>
-<p><img alt="Alt text" src="/images/IMG_0541.JPG" /></p>
-<p>She can be quickly transformed into a builder with a little hat.</p>
-<p><img alt="Alt text" src="/images/IMG_0547.JPG" /></p>
-<p>She likes observing others, even when she lies down.</p>
-<p><img alt="Alt text" src="/images/IMG_0572.JPG" /></p>
+                <p>SQL is a widely used language to manipulate relational database. In distributed system, there is also an SQL like language Hive.  </p>
+<p>A data scientist's daily work may be mainly with R and Python to build statistical models, thus much less with SQL for query operations.
+Although SQL is a simple and easy-to-apply language,  we may somehow forget the language because of lack of practice after some time.<br />
+I tried to summarize this language so as to be able to pick up the language quickly whenever needed.</p>
+<p><strong>Filter</strong>: A basic pattern  is as follows</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">colnames</span> 
+<span class="k">FROM</span> <span class="n">tablename</span>
+<span class="k">WHERE</span> <span class="n">condition_on_colvalues</span>
+</pre></div>
+
+
+<p>it is possible to add restrictive word after SELECT to specify the certain restrictions: such as</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">DISTINCT</span>
+<span class="k">SELECT</span> <span class="n">TOP</span> <span class="n">n</span>
+<span class="k">SELECT</span> <span class="n">TOP</span> <span class="n">n</span> <span class="n">PERCENT</span> 
+</pre></div>
+
+
+<p>it is also possible to used combined conditions in WHERE clause, such as</p>
+<div class="highlight"><pre><span></span><span class="k">WHERE</span> <span class="n">condition_A</span> <span class="k">AND</span> <span class="n">condition_B</span>  <span class="cm">/* or */</span> <span class="cm">/* condition could use operators such as =,&gt;,&lt;,etc */</span>
+<span class="k">WHERE</span> <span class="n">condition_A</span> <span class="k">OR</span> <span class="n">condition_B</span>  <span class="cm">/* and */</span>
+<span class="k">WHERE</span> <span class="n">colelement</span> <span class="k">IN</span> <span class="n">setB</span>  <span class="cm">/* categorical value belonging to a set */</span>
+<span class="k">WHERE</span> <span class="n">colvalue</span> <span class="k">BETWEEN</span> <span class="n">value1</span> <span class="k">AND</span> <span class="n">value2</span> <span class="cm">/* numerical value in an closed interval */</span>
+<span class="k">WHERE</span> <span class="n">colelement</span> <span class="k">LIKE</span> <span class="n">wildcard_character</span> <span class="cm">/* string pattern matching */</span>
+<span class="k">WHERE</span> <span class="k">NOT</span> <span class="n">condition</span> <span class="cm">/* negative condition */</span>
+</pre></div>
+
+
+<p><strong>Sort</strong>: to present results in ordered way, we can use ORDER BY</p>
+<div class="highlight"><pre><span></span><span class="err">Ò</span><span class="n">RDER</span> <span class="k">BY</span> <span class="n">col1</span> <span class="k">ASC</span><span class="p">,</span> <span class="n">col2</span> <span class="k">DESC</span>
+</pre></div>
+
+
+<p><strong>Joins</strong>: Sometimes we need to work on the results of joined tables, think of two sets A,B, there are differents possiblities: intersection, union,complement and combinations of the above three.</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">colnames</span> 
+<span class="k">FROM</span> <span class="n">table1</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">table2</span>  <span class="cm">/* there exists also LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN,  */</span>
+<span class="k">ON</span> <span class="n">table1</span><span class="p">.</span><span class="k">key</span><span class="o">=</span><span class="n">table2</span><span class="p">.</span><span class="k">key</span>
+</pre></div>
+
+
+<p><strong>Filter in aggregated results</strong>: we using functions such as GROUP_BY, COUNT(), the WHERE clause is no more usable, we must use HAVING instead.</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">table2</span><span class="p">.</span><span class="n">col1</span>
+<span class="k">FROM</span> <span class="p">(</span><span class="n">table2</span> 
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">table1</span>
+<span class="k">ON</span> <span class="n">table1</span><span class="p">.</span><span class="k">key</span><span class="o">=</span><span class="n">table2</span><span class="p">.</span><span class="k">key</span><span class="p">)</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">table2</span><span class="p">.</span><span class="n">col1</span>
+<span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">table2</span><span class="p">.</span><span class="n">col2</span><span class="p">)</span><span class="o">&gt;=</span><span class="n">n</span>
+</pre></div>
+
+
+<p><strong>Window Function</strong>: sometimes, we need to do operations in a subset, such as the subgroup after GROUP BY, we can use OVER() and PARTITION BY </p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">table2</span><span class="p">.</span><span class="n">col1</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">table2</span><span class="p">.</span><span class="n">col2</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="k">BY</span> <span class="n">table2</span><span class="p">.</span><span class="n">col1</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="p">(</span><span class="n">table2</span> 
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">table1</span>
+<span class="k">ON</span> <span class="n">table1</span><span class="p">.</span><span class="k">key</span><span class="o">=</span><span class="n">table2</span><span class="p">.</span><span class="k">key</span><span class="p">)</span>
+</pre></div>
+
+
+<p>This summary does not includ all the SQL usecases, however, it is sufficient to revive the memory.</p>
             </div>
             <!-- /.entry-content -->
         </article>

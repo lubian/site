@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en"
+>
+<head>
+    <title>random walker simulation - Welcome to Lu's Site</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/random-walker-simulation.html">
+
+        <meta name="author" content="Lu BIAN" />
+        <meta name="keywords" content="statistics,stochastic,simulation,python" />
+        <meta name="description" content="A random walker starts from a certain point, and has a certain probability to walk to different directions in each step. After k steps, how far is he from the original point? We can model the problem in a 2D plane, vector addition, subtraction and norm can easily help calculate ..." />
+
+        <meta property="og:site_name" content="Welcome to Lu's Site" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="random walker simulation"/>
+        <meta property="og:url" content="/random-walker-simulation.html"/>
+        <meta property="og:description" content="A random walker starts from a certain point, and has a certain probability to walk to different directions in each step. After k steps, how far is he from the original point? We can model the problem in a 2D plane, vector addition, subtraction and norm can easily help calculate ..."/>
+        <meta property="article:published_time" content="2016-03-10" />
+            <meta property="article:section" content="Statistics" />
+            <meta property="article:tag" content="statistics" />
+            <meta property="article:tag" content="stochastic" />
+            <meta property="article:tag" content="simulation" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:author" content="Lu BIAN" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.cerulean.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Welcome to Lu's Site ATOM Feed"/>
+        <link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+              title="Welcome to Lu's Site RSS Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Welcome to Lu's Site            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="/pages/about-me.html">
+                             About Me
+                          </a></li>
+                        <li >
+                            <a href="/category/data-mining.html">Data mining</a>
+                        </li>
+                        <li >
+                            <a href="/category/paintingsdrawings.html">Paintings&drawings</a>
+                        </li>
+                        <li class="active">
+                            <a href="/category/statistics.html">Statistics</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <ol class="breadcrumb">
+                <li><a href="" title="Welcome to Lu's Site"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="/category/statistics.html" title="Statistics">Statistics</a></li>
+                <li class="active">random walker simulation</li>
+            </ol>
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/random-walker-simulation.html"
+                       rel="bookmark"
+                       title="Permalink to random walker simulation">
+                        random walker simulation
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-03-10T10:20:00+00:00"> Thu 10 March 2016</time>
+    </span>
+
+        <span class="label label-default">Category</span>
+        <a href="/category/statistics.html">Statistics</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/statistics.html">statistics</a>
+        /
+	<a href="/tag/stochastic.html">stochastic</a>
+        /
+	<a href="/tag/simulation.html">simulation</a>
+        /
+	<a href="/tag/python.html">python</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>A random walker starts from a certain point, and has a certain probability to walk to different directions in each step. After k steps, how far is he from the original point?<br />
+We can model the problem in a 2D plane, vector addition, subtraction and norm can easily help calculate the distances:<br />
+let position be vector (x,y)<br />
+- starting point ori=(a,b)<br />
+- all the possible walks in each step as vector (delta_x,delta_y) belongs to {(0,1),(0,-1),(1,0),(-1,0)}<br />
+- the new position = old position + walk<br />
+- ditance between the new position and the starting point: ||new position-starting point||  </p>
+<div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">pylab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linalg</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+
+<span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">position</span><span class="p">,</span><span class="n">starting_point</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])):</span>
+    <span class="sd">&#39;&#39;&#39;(ndarray,ndarray)-&gt;float</span>
+<span class="sd">    this function returns the Euclidean distance of two points &#39;&#39;&#39;</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">position</span><span class="o">-</span><span class="n">starting_point</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">random_walker</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">starting_point</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="n">possible_steps</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])]):</span>
+    <span class="sd">&#39;&#39;&#39;(int,ndarray,list)-&gt;array</span>
+<span class="sd">    this function simulates a random walker with equal probability for all possible_steps. The function</span>
+<span class="sd">    returns the position after k steps.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">()</span>
+    <span class="n">position</span><span class="o">=</span><span class="n">starting_point</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="n">step</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">possible_steps</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> th step, position </span><span class="si">%s</span><span class="s1">, add random walk </span><span class="si">%s</span><span class="s1">, new position </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">position</span><span class="p">,</span><span class="n">step</span><span class="p">,</span><span class="n">position</span><span class="o">+</span><span class="n">step</span><span class="p">))</span>
+        <span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="o">+</span><span class="n">step</span>        
+    <span class="k">return</span> <span class="n">position</span>
+<span class="n">random_walker</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>1 th step, position [0 0], add random walk [ 0 -1], new position [ 0 -1]
+2 th step, position [ 0 -1], add random walk [-1  0], new position [-1 -1]
+3 th step, position [-1 -1], add random walk [0 1], new position [-1  0]
+4 th step, position [-1  0], add random walk [0 1], new position [-1  1]
+5 th step, position [-1  1], add random walk [1 0], new position [0 1]
+6 th step, position [0 1], add random walk [ 0 -1], new position [0 0]
+7 th step, position [0 0], add random walk [ 0 -1], new position [ 0 -1]
+8 th step, position [ 0 -1], add random walk [-1  0], new position [-1 -1]
+9 th step, position [-1 -1], add random walk [-1  0], new position [-2 -1]
+10 th step, position [-2 -1], add random walk [0 1], new position [-2  0]
+
+
+
+
+
+array([-2,  0])
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">random_walker_pos</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">starting_point</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="n">possible_steps</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])]):</span>
+    <span class="sd">&#39;&#39;&#39;(int,ndarray,list)-&gt;list</span>
+<span class="sd">    this function simulates a random walker with equal probability for all possible_steps. The function</span>
+<span class="sd">    returns all the positions after each step.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">()</span>
+    <span class="n">pos_all</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">pos_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">starting_point</span><span class="p">)</span>
+    <span class="n">position</span><span class="o">=</span><span class="n">starting_point</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="n">step</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">possible_steps</span><span class="p">)</span>
+        <span class="c1">#print((position,step))</span>
+        <span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="o">+</span><span class="n">step</span>
+        <span class="n">pos_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pos_all</span>
+</pre></div>
+
+
+<p>it is also possible to visulize it in a plot</p>
+<div class="highlight"><pre><span></span><span class="n">res</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">random_walker_pos</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">res</span>
+</pre></div>
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>-1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+
+<p><img alt="png" src="/images/random_walker_files/random_walker_6_0.png" /></p>
+<p>Next we will have a look at the distance.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">random_walker_dist</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">starting_point</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="n">possible_steps</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])]):</span>
+    <span class="sd">&#39;&#39;&#39;(int,ndarray,list)-&gt;list</span>
+<span class="sd">    this function simulate a random walker with equal probability for all possible_steps. The function</span>
+<span class="sd">    returns a list of distances after each step.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">all_dist</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">()</span>
+    <span class="n">position</span><span class="o">=</span><span class="n">starting_point</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="n">step</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">possible_steps</span><span class="p">)</span>
+        <span class="c1">#print((position,step))</span>
+        <span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="o">+</span><span class="n">step</span>  
+        <span class="n">all_dist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">distance</span><span class="p">(</span><span class="n">position</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">all_dist</span>
+<span class="n">random_walker_dist</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>[1.0,
+ 1.4142135623730951,
+ 2.2360679774997898,
+ 1.4142135623730951,
+ 1.0,
+ 2.0,
+ 2.2360679774997898,
+ 3.1622776601683795,
+ 3.6055512754639891,
+ 3.1622776601683795]
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">n_trials</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;(int,int)-&gt;list</span>
+<span class="sd">    this function simulate n trials of a random walker who walks k steps. </span>
+<span class="sd">    The function returns a list of n list, each list records the distances after each step in a trial &#39;&#39;&#39;</span>
+    <span class="n">all_list</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">all_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">random_walker_dist</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">all_list</span>
+</pre></div>
+
+
+<p>We can plot the average distance for each step k, which is bearly linear with the square root of k</p>
+<div class="highlight"><pre><span></span><span class="n">average</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">n_trials</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">average</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10001</span><span class="p">)])</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1049b33c8&gt;
+</pre></div>
+
+
+<p><img alt="png" src="/images/random_walker_files/random_walker_11_1.png" /></p>
+<p>Random Walker is a classical stochastic model, wth the functions above, we can also change the probability mass function instead of using equal probability. We can also modify the set of possible walk in each step. It is also used in stock market simulation.</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="https://www.linkedin.com/in/lu-bian-58ba2417?trk=hp-identity-name"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+                <li class="list-group-item"><a href="https://github.com/lubian"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+                <li class="list-group-item"><a href="http://twitter.com/lulubian"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+              </ul>
+            </li>
+
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="/sql-summary.html">
+                            SQL summary
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/random-walker-simulation.html">
+                            random walker simulation
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/mystery.html">
+                            Mystery
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/stock-price-analysis-with-timeseries.html">
+                            stock price analysis with timeseries
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="list-group-item"><a href="//home/lulu/pelican-themes/pelican-bootstrap3/templates/tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group list-inline tagcloud" id="tags">
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/conditional-probability.html">
+                            conditional probability
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/multiplication-rule.html">
+                            multiplication rule
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/ngrams.html">
+                            ngrams
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/probability.html">
+                            probability
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="/tag/python.html">
+                            python
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/recursion.html">
+                            recursion
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/simulation.html">
+                            simulation
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/sql.html">
+                            SQL
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="/tag/statistics.html">
+                            statistics
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/stochastic.html">
+                            stochastic
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/text-mining.html">
+                            text mining
+                        </a>
+                    </li>
+                </ul>
+            </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 Lu Bian
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+</body>
+</html>
