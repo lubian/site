@@ -3,7 +3,7 @@
 &lt;p&gt;A data scientist's daily work may be mainly with R and Python to build statistical models, thus much less with SQL for query operations.
 Although SQL is a simple and easy-to-apply language,  we may somehow forget the language because of lack of practice after some time.&lt;br /&gt;
 I tried to summarize this language so as to be able to pick up the language quickly whenever needed.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Filter&lt;/strong&gt;: A basic pattern  is as follows&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Filter&lt;/strong&gt;: a basic pattern  is as follows&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;colnames&lt;/span&gt; 
 &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;tablename&lt;/span&gt;
 &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;condition_on_colvalues&lt;/span&gt;
@@ -28,7 +28,7 @@ I tried to summarize this language so as to be able to pick up the language quic
 
 
 &lt;p&gt;&lt;strong&gt;Sort&lt;/strong&gt;: to present results in ordered way, we can use ORDER BY&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Ò&lt;/span&gt;&lt;span class="n"&gt;RDER&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;col1&lt;/span&gt; &lt;span class="k"&gt;ASC&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;col2&lt;/span&gt; &lt;span class="k"&gt;DESC&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;ORDER&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;col1&lt;/span&gt; &lt;span class="k"&gt;ASC&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;col2&lt;/span&gt; &lt;span class="k"&gt;DESC&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
